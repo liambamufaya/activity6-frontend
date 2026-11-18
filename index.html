@@ -9,6 +9,105 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+     <a class="skip" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <div class="wrap bar">
+      <p class="brand">Library Service Requests</p>
+      <nav aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#manage">Manage Records</a>
+        <a href="#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="wrap">
+    <section id="home" class="hero" aria-labelledby="home-title">
+      <h1 id="home-title">Library Service Requests</h1>
+      <p>Ask the library for help and follow each request until it is done. Log a book search, a borrowing question or an account problem, then update its status as staff work on it.</p>
+      <p><a class="btn primary" href="#manage">Go to Manage Records</a></p>
+    </section>
+
+    <section id="manage" aria-labelledby="manage-title">
+      <h2 id="manage-title">Manage Records</h2>
+      <div id="message" class="message" role="status" aria-live="polite" hidden></div>
+
+      <div class="layout">
+        <form id="record-form" novalidate aria-labelledby="form-title">
+          <h3 id="form-title">Add a request</h3>
+          <input type="hidden" id="record-id">
+
+          <label for="title">Title</label>
+          <input id="title" name="title" type="text" maxlength="80" autocomplete="off" required aria-describedby="title-hint title-error">
+          <small id="title-hint">3 to 80 characters.</small>
+          <span id="title-error" class="error" role="alert"></span>
+
+          <label for="category">Category</label>
+          <input id="category" name="category" type="text" list="category-list" maxlength="40" autocomplete="off" required aria-describedby="category-error">
+          <datalist id="category-list">
+            <option value="Book search"><option value="Borrowing"><option value="Account help">
+            <option value="Study room"><option value="Printing"><option value="Research help">
+          </datalist>
+          <span id="category-error" class="error" role="alert"></span>
+
+          <label for="description">Description</label>
+          <textarea id="description" name="description" rows="4" maxlength="300" required aria-describedby="description-hint description-error"></textarea>
+          <small id="description-hint">5 to 300 characters.</small>
+          <span id="description-error" class="error" role="alert"></span>
+
+          <label for="status">Status</label>
+          <select id="status" name="status">
+            <option>Pending</option>
+            <option>In progress</option>
+            <option>Completed</option>
+          </select>
+
+          <div class="actions">
+            <button type="submit" id="save-btn" class="btn primary">Add request</button>
+            <button type="button" id="cancel-btn" class="btn" hidden>Cancel Edit</button>
+          </div>
+        </form>
+
+        <div>
+          <div class="controls">
+            <div>
+              <label for="search">Search by title</label>
+              <input id="search" type="search" autocomplete="off">
+            </div>
+            <div>
+              <label for="filter">Filter by status</label>
+              <select id="filter">
+                <option value="">All statuses</option>
+                <option>Pending</option>
+                <option>In progress</option>
+                <option>Completed</option>
+              </select>
+            </div>
+          </div>
+          <p id="count" class="count" aria-live="polite"></p>
+          <p id="empty" class="empty" hidden></p>
+          <ul id="record-list" class="record-grid"></ul>
+
+          <section id="details" class="details" tabindex="-1" aria-labelledby="details-title" hidden>
+            <h3 id="details-title">Request details</h3>
+            <dl id="details-body"></dl>
+            <button type="button" id="close-details" class="btn">Close details</button>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">About</h2>
+      <dl class="about">
+        <dt>Project name</dt><dd>Library Service Requests</dd>
+        <dt>Student number</dt><dd>202501125</dd>
+        <dt>Data</dt><dd>This version uses browser demonstration data. Records are saved in this browser only, using localStorage.</dd>
+      </dl>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="wrap">ICT251 Activity 6 &middot; Mulungushi University</div></footer>
+  <script type="module" src="./js/app.js"></script>
 </body>
 </html>
